@@ -17,6 +17,28 @@ class QuotesController < ApplicationController
     end
   end
 
+  def show
+    @quote = Quote.find(params[:id])
+  end
+
+  def edit
+    @quote = Quote.find(params[:id])
+  end
+
+  def update
+    @quote = Quote.find(params[:id])
+    if @quote.update(quote_params)
+      redirect_to quote_path(@quote)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    Quote.destroy(params[:id])
+    redirect_to quotes_path
+  end
+
   private
 
   def quote_params

@@ -1,4 +1,12 @@
+<%= link_to "Add New Quote", new_quote_path %>
+
+<br />
+<br />
 <% @quotes.each do |quote| %>
   <%= quote.content %> - <%= quote.author %>
+  <br />
+  <%= link_to "View Quote", quote_path(quote) %>
+  <%= link_to "Delete Quote", quote_path(quote), method: 'delete' %>
+
   <hr></hr>
   <% end %>
